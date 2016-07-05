@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="youngleish" />
+  <meta name="keywords" content="构建工具,gulp," />
 
 
 
@@ -84,15 +84,22 @@
 
 
 
-<meta name="description" content="纸上得来中觉浅,绝知此事要躬行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="youngleish">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="月影大大在使用Gulp构建网站小白教程这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：
+
+Gulp.js是一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见的任务。Gulp.js是基于Node.js构建的，利用Node.js流的威力，你可以快速的构建项目并减少频繁的IO操作。Gulp.js源文件和你用来定义任务的Gulp文件都是通过Javascript （或者Coffee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建工具--Gulp中的stream">
+<meta property="og:url" content="http://yoursite.com/2016/06/26/gulp-stream/index.html">
 <meta property="og:site_name" content="youngleish">
-<meta property="og:description" content="纸上得来中觉浅,绝知此事要躬行">
+<meta property="og:description" content="月影大大在使用Gulp构建网站小白教程这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：
+
+Gulp.js是一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见的任务。Gulp.js是基于Node.js构建的，利用Node.js流的威力，你可以快速的构建项目并减少频繁的IO操作。Gulp.js源文件和你用来定义任务的Gulp文件都是通过Javascript （或者Coffee">
+<meta property="og:updated_time" content="2016-07-05T13:43:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="youngleish">
-<meta name="twitter:description" content="纸上得来中觉浅,绝知此事要躬行">
+<meta name="twitter:title" content="构建工具--Gulp中的stream">
+<meta name="twitter:description" content="月影大大在使用Gulp构建网站小白教程这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：
+
+Gulp.js是一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见的任务。Gulp.js是基于Node.js构建的，利用Node.js流的威力，你可以快速的构建项目并减少频繁的IO操作。Gulp.js源文件和你用来定义任务的Gulp文件都是通过Javascript （或者Coffee">
 
 
 
@@ -113,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/06/26/gulp-stream/"/>
 
-  <title> youngleish </title>
+  <title> 构建工具--Gulp中的stream | youngleish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +230,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +252,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/26/gulp-stream/" itemprop="url">
-                  构建工具--Gulp中的stream
-                </a>
+                构建工具--Gulp中的stream
               
             
           </h1>
@@ -309,9 +311,7 @@
       
 
       
-        
-          
-            <p>月影大大在<a href="http://www.75team.com/post/gulp-build.html" target="_blank" rel="external">使用Gulp构建网站小白教程</a>这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：</p>
+        <p>月影大大在<a href="http://www.75team.com/post/gulp-build.html" target="_blank" rel="external">使用Gulp构建网站小白教程</a>这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：</p>
 <blockquote>
 <p>Gulp.js是一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见的任务。Gulp.js是基于Node.js构建的，利用Node.js流的威力，你可以快速的构建项目并减少频繁的IO操作。Gulp.js源文件和你用来定义任务的Gulp文件都是通过Javascript （或者CoffeeScript） 源码来实现的。</p>
 </blockquote>
@@ -334,36 +334,46 @@
 <p>Gulp默认使用buffer格式，是因为有些任务例如：压缩js,文本替换等，需要完整的文件内容来操作。</p>
 <h4 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h4><p>这些连接是我学习过程中阅读过的文章，对我认识stream有很大的帮助，谢谢各位无私奉献大神。<br><a href="http://acgtofe.com/posts/2015/09/dive-into-gulp-stream" target="_blank" rel="external">http://acgtofe.com/posts/2015/09/dive-into-gulp-stream</a><br><a href="https://csspod.com/advanced-tips-for-using-gulp-js/" target="_blank" rel="external">https://csspod.com/advanced-tips-for-using-gulp-js/</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/构建工具/" rel="tag">#构建工具</a>
+          
+            <a href="/tags/gulp/" rel="tag">#gulp</a>
+          
+        </div>
       
 
       
+
       
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -371,6 +381,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -390,8 +404,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -441,6 +464,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vinyl-File-Object-Sream（虚拟文件对象流）"><span class="nav-number">1.</span> <span class="nav-text">Vinyl File Object Sream（虚拟文件对象流）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vinyl"><span class="nav-number">2.</span> <span class="nav-text">Vinyl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vinyl-fs"><span class="nav-number">3.</span> <span class="nav-text">Vinyl-fs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不使用Node-js-中的stream"><span class="nav-number">4.</span> <span class="nav-text">为什么不使用Node.js 中的stream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么gulp-src中options-buffer默认是buffer形式返回文件内容"><span class="nav-number">5.</span> <span class="nav-text">为什么gulp.src中options.buffer默认是buffer形式返回文件内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章："><span class="nav-number">6.</span> <span class="nav-text">参考文章：</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -537,6 +571,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
