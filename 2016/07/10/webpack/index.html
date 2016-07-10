@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="youngleish" />
+  <meta name="keywords" content="构建工具,webpack," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="纸上得来中觉浅,绝知此事要躬行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="youngleish">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
+12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建工具--webpack实践">
+<meta property="og:url" content="http://yoursite.com/2016/07/10/webpack/index.html">
 <meta property="og:site_name" content="youngleish">
-<meta property="og:description" content="纸上得来中觉浅,绝知此事要躬行">
+<meta property="og:description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
+12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
+<meta property="og:updated_time" content="2016-07-10T05:40:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="youngleish">
-<meta name="twitter:description" content="纸上得来中觉浅,绝知此事要躬行">
+<meta name="twitter:title" content="构建工具--webpack实践">
+<meta name="twitter:description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
+12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
 
 
 
@@ -113,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/10/webpack/"/>
 
-  <title> youngleish </title>
+  <title> 构建工具--webpack实践 | youngleish </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +227,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +249,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/10/webpack/" itemprop="url">
-                  构建工具--webpack实践
-                </a>
+                构建工具--webpack实践
               
             
           </h1>
@@ -309,9 +308,7 @@
       
 
       
-        
-          
-            <h4 id="多个文件入口"><a href="#多个文件入口" class="headerlink" title="多个文件入口"></a>多个文件入口</h4><p>项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：</p>
+        <h4 id="多个文件入口"><a href="#多个文件入口" class="headerlink" title="多个文件入口"></a>多个文件入口</h4><p>项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123; //配置入口文件，有几个写几个</span><br><span class="line">        index: &apos;./src/js/page/index.js&apos;,</span><br><span class="line">        list: &apos;./src/js/page/list.js&apos;,</span><br><span class="line">        about: &apos;./src/js/page/about.js&apos;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>这种方式非常不方便，比如项目中新增了js文件，还要手动去改Webpack的配置文件，有没有什么方法可以批量处理这些入口文件呢？</p>
 <h6 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h6><p>Node.js中的glob模块是主要功能是匹配指定模式下的文件或者目录。<br>glob有同步和异步2种方法，2种方法的区别就在于回调函数。</p>
@@ -331,170 +328,60 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var glob = require(&apos;glob&apos;);</span><br><span class="line">var path = require(&apos;path&apos;);</span><br><span class="line">var sourcePath = &apos;./src/public/js/entry/**/*.js&apos;;</span><br><span class="line">var entry = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">glob.sync(sourcePath).forEach(function(item)&#123;</span><br><span class="line">    var extName = path.extname(item);</span><br><span class="line">    var baseName = path.basename(item,extName);</span><br><span class="line">    entry[baseName] = item;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(entry);</span><br><span class="line"></span><br><span class="line">//结果</span><br><span class="line">➜  cmstmplate git:(yanglei/gulp) ✗ node app.js</span><br><span class="line">&#123; buyer2: &apos;./src/public/js/entry/buyer/buyer2.js&apos;,</span><br><span class="line">  buyer1: &apos;./src/public/js/entry/buyer1.js&apos;,</span><br><span class="line">  help: &apos;./src/public/js/entry/help/help.js&apos;,</span><br><span class="line">  shaidan1: &apos;./src/public/js/entry/shaidan/shaidan1.js&apos;,</span><br><span class="line">  shaidan2: &apos;./src/public/js/entry/shaidan/shaidan2.js&apos;,</span><br><span class="line">  shaidan3: &apos;./src/public/js/entry/shaidan/shaidan3.js&apos;,</span><br><span class="line">  stock: &apos;./src/public/js/entry/stock/stock.js&apos; &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="合并js"><a href="#合并js" class="headerlink" title="合并js"></a>合并js</h4><p>后续会继续更新…</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/26/gulp-stream/" itemprop="url">
-                  构建工具--Gulp中的stream
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-26T22:32:44+08:00" content="2016-06-26">
-              2016-06-26
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/构建工具/" itemprop="url" rel="index">
-                    <span itemprop="name">构建工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/构建工具/" rel="tag">#构建工具</a>
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>月影大大在<a href="http://www.75team.com/post/gulp-build.html" target="_blank" rel="external">使用Gulp构建网站小白教程</a>这篇文章中引用的描述，可以让我们更详细的了解Gulp的功能：</p>
-<blockquote>
-<p>Gulp.js是一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见的任务。Gulp.js是基于Node.js构建的，利用Node.js流的威力，你可以快速的构建项目并减少频繁的IO操作。Gulp.js源文件和你用来定义任务的Gulp文件都是通过Javascript （或者CoffeeScript） 源码来实现的。</p>
-</blockquote>
-<p>可以看到Gulp是基于流的，但是在查看Gulp的api的时候,看到gulp.src()方法中的参数options.buffer让我对流产生了疑问,api只有在options.buffer值设置成false的时候才会以 stream 方式返回 file.contents,说好了不是以stream方式运行的么,怎么在获取流的时候默认是以buffer的形式返回file.contents呢? 另外Gulp.js的stream和Node.js的stream有什么区别么?带着这个疑问我开始学习gulp中的stream。</p>
-<h4 id="Vinyl-File-Object-Sream（虚拟文件对象流）"><a href="#Vinyl-File-Object-Sream（虚拟文件对象流）" class="headerlink" title="Vinyl File Object Sream（虚拟文件对象流）"></a>Vinyl File Object Sream（虚拟文件对象流）</h4><p>Gulp中的流是<strong>Vinyl File Object Sream</strong>（虚拟文件对象流），用的是一个npm的vinyl-fs模块。</p>
-<h4 id="Vinyl"><a href="#Vinyl" class="headerlink" title="Vinyl"></a>Vinyl</h4><p>Vinyl 是一个虚拟文件格式,主要用来描述文件信息,通过<a href="https://www.npmjs.com/package/vinyl" target="_blank" rel="external">官网</a>可以看到vinyl是一个对象，有4个属性cwd（工作目录）、base、path、contets,主要使用的属性是path和contents。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var File = require(&apos;vinyl&apos;);</span><br><span class="line"></span><br><span class="line">var coffeeFile = new File(&#123;</span><br><span class="line">  cwd: &quot;/&quot;,</span><br><span class="line">  base: &quot;/test/&quot;,</span><br><span class="line">  path: &quot;/test/file.coffee&quot;,</span><br><span class="line">  contents: new Buffer(&quot;test = 123&quot;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//下面代码是检测四个属性值</span><br><span class="line">gulp.task(&apos;test&apos;,function()&#123;</span><br><span class="line">    return gulp.src(&apos;./static/style/block/button.less&apos;).on(&apos;data&apos;,function(file)&#123;</span><br><span class="line">        console.log(file.cwd);</span><br><span class="line">        console.log(file.base);</span><br><span class="line">        console.log(file.path);</span><br><span class="line">        console.log(file.contents);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//结果</span><br><span class="line"></span><br><span class="line">➜  web git:(feature/jn) ✗ gulp test</span><br><span class="line">[21:33:45] Using gulpfile ~/aimei/buyer/web/gulpfile.js</span><br><span class="line">[21:33:45] Starting &apos;test&apos;...</span><br><span class="line">/Users/young/aimei/buyer/web</span><br><span class="line">/Users/young/aimei/buyer/web/static/style/block/</span><br><span class="line">/Users/young/aimei/buyer/web/static/style/block/button.less</span><br><span class="line">&lt;Buffer 2e 62 75 74 74 6f 6e 28 29 20 7b 0a 20 20 20 20 2e 62 6f 72 64 65 72 2d 72 28 32 70 78 29 3b 0a 20 20 20 20 2e 63 75 72 73 6f 72 3b 0a 20 20 20 20 2e ... &gt;</span><br><span class="line">[21:33:45] Finished &apos;test&apos; after 19 ms</span><br></pre></td></tr></table></figure>
-<h4 id="Vinyl-fs"><a href="#Vinyl-fs" class="headerlink" title="Vinyl-fs"></a>Vinyl-fs</h4><p>官网中提到Vinyl-fs是文件系统的适配器（adapter）。Vinyl提供了描述文件的方法，适配器Vinyl-fs为访问这些文件提供了方法，主要暴露了3个方法：.src(globs),.dest(folder)和.watch(glob,fn)。通过查看<a href="https://github.com/MissHoya/weui-gulpfile-analysis/blob/master/gulpfile.js" target="_blank" rel="external">Gulp源码</a>可以看到Gulp的src,dest的方法继承于Vinyl-fs.</p>
-<h4 id="为什么不使用Node-js-中的stream"><a href="#为什么不使用Node-js-中的stream" class="headerlink" title="为什么不使用Node.js 中的stream"></a>为什么不使用Node.js 中的stream</h4><p>Node.js 中的stream只传输String和Buffer, 注重的是文件的内容，而Gulp.js不止需要文件的内容，还需要用到文件的路径等信息，因此才会使用Vinyl File Object Stream。</p>
-<h4 id="为什么gulp-src中options-buffer默认是buffer形式返回文件内容"><a href="#为什么gulp-src中options-buffer默认是buffer形式返回文件内容" class="headerlink" title="为什么gulp.src中options.buffer默认是buffer形式返回文件内容"></a>为什么gulp.src中options.buffer默认是buffer形式返回文件内容</h4><p>虚拟文件对象(Vinyl File Object)的contents有三种类型：</p>
-<ul>
-<li>Stream</li>
-<li>Buffer</li>
-<li>Null</li>
-</ul>
-<p>Stream可以把数据分成数据块（chunk）传输,我们可以通过监听data事件来检测chunk:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;stream&apos;,function()&#123;</span><br><span class="line">    return gulp.src(&apos;./word.js&apos;,&#123;buffer:false&#125;)</span><br><span class="line">        .on(&apos;data&apos;,function(file)&#123;</span><br><span class="line">            var stream = file.contents;</span><br><span class="line">            stream.on(&apos;data&apos;, function(chunk) &#123;</span><br><span class="line">                console.log(&apos;Read %d bytes of data&apos;, chunk.length);</span><br><span class="line">                console.log(Buffer.isBuffer(chunk));</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//结果：</span><br><span class="line"></span><br><span class="line">➜  cmstmplate git:(yanglei/gulp) ✗ gulp stream</span><br><span class="line">[13:36:23] Using gulpfile ~/Sites/AMBackend/operate/web/cmstmplate/gulpfile.js</span><br><span class="line">[13:36:23] Starting &apos;stream&apos;...</span><br><span class="line">[13:36:23] Finished &apos;stream&apos; after 18 ms</span><br><span class="line">Read 65536 bytes of data</span><br><span class="line">true</span><br><span class="line">Read 65536 bytes of data</span><br><span class="line">true</span><br><span class="line">Read 35634 bytes of data</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-<p>可以看到stream的数据块是也是buffer。Gulp中默认使用buffer形式,也就是说我们通过gulp.src()获取的不是chunk,而是转换成buffer以后的一个虚拟文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;buffer&apos;,function()&#123;</span><br><span class="line">    return gulp.src(&apos;./word.js&apos;)</span><br><span class="line">        .on(&apos;data&apos;,function(file)&#123;</span><br><span class="line">            var stream = file.contents;</span><br><span class="line">            console.log(&apos;Read %d bytes of data&apos;, stream.length);</span><br><span class="line">            console.log(stream);</span><br><span class="line">            console.log(Buffer.isBuffer(stream));</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//结果</span><br><span class="line"></span><br><span class="line">➜  cmstmplate git:(yanglei/gulp) ✗ gulp buffer</span><br><span class="line">[13:45:57] Using gulpfile ~/Sites/AMBackend/operate/web/cmstmplate/gulpfile.js</span><br><span class="line">[13:45:57] Starting &apos;buffer&apos;...</span><br><span class="line">Read 166706 bytes of data</span><br><span class="line">&lt;Buffer 21 66 75 6e 63 74 69 6f 6e 28 65 2c 74 29 7b 66 75 6e 63 74 69 6f 6e 20 69 28 29 7b 76 61 72 20 74 3d 6e 2e 67 65 74 42 6f 75 6e 64 69 6e 67 43 6c 69 ... &gt;</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-<p>Gulp默认使用buffer格式，是因为有些任务例如：压缩js,文本替换等，需要完整的文件内容来操作。</p>
-<h4 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h4><p>这些连接是我学习过程中阅读过的文章，对我认识stream有很大的帮助，谢谢各位无私奉献大神。<br><a href="http://acgtofe.com/posts/2015/09/dive-into-gulp-stream" target="_blank" rel="external">http://acgtofe.com/posts/2015/09/dive-into-gulp-stream</a><br><a href="https://csspod.com/advanced-tips-for-using-gulp-js/" target="_blank" rel="external">https://csspod.com/advanced-tips-for-using-gulp-js/</a></p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/26/gulp-stream/" rel="next" title="构建工具--Gulp中的stream">
+                <i class="fa fa-chevron-left"></i> 构建工具--Gulp中的stream
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -502,6 +389,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -521,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -572,6 +472,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#多个文件入口"><span class="nav-number">1.</span> <span class="nav-text">多个文件入口</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#glob"><span class="nav-number">1.0.1.</span> <span class="nav-text">glob</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#path"><span class="nav-number">1.0.2.</span> <span class="nav-text">path</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#批量处理入口文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">批量处理入口文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并js"><span class="nav-number">2.</span> <span class="nav-text">合并js</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -668,6 +579,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
