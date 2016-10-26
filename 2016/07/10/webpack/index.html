@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
-12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
+<meta name="description" content="本文记录了我在项目中对webpack实践.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建工具--webpack实践">
 <meta property="og:url" content="http://yoursite.com/2016/07/10/webpack/index.html">
 <meta property="og:site_name" content="youngleish">
-<meta property="og:description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
-12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
-<meta property="og:updated_time" content="2016-07-10T05:40:49.000Z">
+<meta property="og:description" content="本文记录了我在项目中对webpack实践.">
+<meta property="og:updated_time" content="2016-10-26T03:59:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建工具--webpack实践">
-<meta name="twitter:description" content="多个文件入口项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：
-12345entry: &amp;#123; //配置入口文件，有几个写几个        index: &amp;apos;./src/js/page/index.js&amp;apos;,        list: &amp;apos;.">
+<meta name="twitter:description" content="本文记录了我在项目中对webpack实践.">
 
 
 
@@ -308,7 +305,8 @@
       
 
       
-        <h4 id="多个文件入口"><a href="#多个文件入口" class="headerlink" title="多个文件入口"></a>多个文件入口</h4><p>项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：</p>
+        <p>本文记录了我在项目中对webpack实践.<br><a id="more"></a></p>
+<h4 id="多个文件入口"><a href="#多个文件入口" class="headerlink" title="多个文件入口"></a>多个文件入口</h4><p>项目中入口文件都放在src/public/js/entry文件夹下面了，并且根据业务的特点做了不同的命名，在查阅webpack的文档时发现，文档中多个文件入口都类似这样配置的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123; //配置入口文件，有几个写几个</span><br><span class="line">        index: &apos;./src/js/page/index.js&apos;,</span><br><span class="line">        list: &apos;./src/js/page/list.js&apos;,</span><br><span class="line">        about: &apos;./src/js/page/about.js&apos;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>这种方式非常不方便，比如项目中新增了js文件，还要手动去改Webpack的配置文件，有没有什么方法可以批量处理这些入口文件呢？</p>
 <h6 id="glob"><a href="#glob" class="headerlink" title="glob"></a>glob</h6><p>Node.js中的glob模块是主要功能是匹配指定模式下的文件或者目录。<br>glob有同步和异步2种方法，2种方法的区别就在于回调函数。</p>
