@@ -1,0 +1,605 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="移动端,问题汇总," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="移动端遇到的问题集合入前端已经有1年多的时间了，在项目开发中也遇到过很多问题，但是每次解决完问题以后都没有做相应的记录，现在仔细回忆，也就只能记起几个，（后悔脸…）。俗话说「好记性不如烂笔头」，以后我会把项目中遇到的问题及时记到这里，目前先把我仅能回想起的几个问题先记录到这里。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端遇到的问题集合">
+<meta property="og:url" content="http://yoursite.com/2016/10/30/problems/index.html">
+<meta property="og:site_name" content="youngleish">
+<meta property="og:description" content="移动端遇到的问题集合入前端已经有1年多的时间了，在项目开发中也遇到过很多问题，但是每次解决完问题以后都没有做相应的记录，现在仔细回忆，也就只能记起几个，（后悔脸…）。俗话说「好记性不如烂笔头」，以后我会把项目中遇到的问题及时记到这里，目前先把我仅能回想起的几个问题先记录到这里。">
+<meta property="og:updated_time" content="2016-10-29T16:21:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端遇到的问题集合">
+<meta name="twitter:description" content="移动端遇到的问题集合入前端已经有1年多的时间了，在项目开发中也遇到过很多问题，但是每次解决完问题以后都没有做相应的记录，现在仔细回忆，也就只能记起几个，（后悔脸…）。俗话说「好记性不如烂笔头」，以后我会把项目中遇到的问题及时记到这里，目前先把我仅能回想起的几个问题先记录到这里。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/30/problems/"/>
+
+  <title> 移动端遇到的问题集合 | youngleish </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">youngleish</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                移动端遇到的问题集合
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-30T00:20:28+08:00" content="2016-10-30">
+              2016-10-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="移动端遇到的问题集合"><a href="#移动端遇到的问题集合" class="headerlink" title="移动端遇到的问题集合"></a>移动端遇到的问题集合</h2><p>入前端已经有1年多的时间了，在项目开发中也遇到过很多问题，但是每次解决完问题以后都没有做相应的记录，现在仔细回忆，也就只能记起几个，（后悔脸…）。俗话说「好记性不如烂笔头」，以后我会把项目中遇到的问题及时记到这里，目前先把我仅能回想起的几个问题先记录到这里。<br><a id="more"></a></p>
+<h4 id="关于localStorage"><a href="#关于localStorage" class="headerlink" title="关于localStorage"></a>关于localStorage</h4><h6 id="浏览器隐私模式"><a href="#浏览器隐私模式" class="headerlink" title="浏览器隐私模式"></a>浏览器隐私模式</h6><p>现在很多浏览器都有隐私模式，在隐私模式下不容许读取浏览器本地存储的内容，js会因此报错，bug也就接踵而至啦。</p>
+<p>解决办法：</p>
+<p>1）如果项目中已经大量的使用了localStorage，那么可以在影响用户操作的关键页面做出提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    if(&apos;localStorage&apos; in window)&#123;</span><br><span class="line">        //使用localStorage的代码</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //无法使用localStorage的提示</span><br><span class="line">    &#125;</span><br><span class="line">&#125;cache(e)&#123;</span><br><span class="line">    //无法使用localStorage的提示</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）如果是新需求，需要传递的信息不用考虑安全问题，可以使用url,来传递。</p>
+<h4 id="关于ios系统中，中文输入法输入英文的时候出现的1-6空格"><a href="#关于ios系统中，中文输入法输入英文的时候出现的1-6空格" class="headerlink" title="关于ios系统中，中文输入法输入英文的时候出现的1/6空格"></a>关于ios系统中，中文输入法输入英文的时候出现的1/6空格</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.value = this.value.replace(&apos;/\u2006/g&apos;,&apos;&apos;);</span><br></pre></td></tr></table></figure>
+<h4 id="UC浏览器页面字体被无辜放大："><a href="#UC浏览器页面字体被无辜放大：" class="headerlink" title="UC浏览器页面字体被无辜放大："></a>UC浏览器页面字体被无辜放大：</h4><p>通过删除代码的方法确定了当某个元素的字体值设置在一个临界值的时候就会把所有字体放大,临界值是多少我忘记了，以后遇到会再更新。</p>
+<h4 id="安卓多次无法调起微信支付的问题："><a href="#安卓多次无法调起微信支付的问题：" class="headerlink" title="安卓多次无法调起微信支付的问题："></a>安卓多次无法调起微信支付的问题：</h4><p>错误提示：WeixinJSBridge is not defined<br>错误原因： <a href="http://rapheal.sinaapp.com/2014/11/06/javascript-error-monitor/" target="_blank" rel="external">这篇文章下面的讨论区有人提了这个问题，大神回复说是微信webview注入钩子的时候有时序问题，会在后面版本修复</a><br>当时的解决办法：在调起微信支付的函数里面添加try cache</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    if(typeof WeixinJsBridge == undefined)&#123;</span><br><span class="line">        setTimeout(callWXPay,300);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        wxApiCall();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;cache(e)&#123;</span><br><span class="line">    setTimeout(callWXPay,300);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="retina屏幕中1px的问题"><a href="#retina屏幕中1px的问题" class="headerlink" title="retina屏幕中1px的问题"></a>retina屏幕中1px的问题</h4><p>问题描述：以iPhone6为例，设备像素比dpr=2,即页面中的1个css像素对应2个设备像素（<a href="https://youngleish.github.io/2016/07/21/h5-mobile/" target="_blank" rel="external">关于css像素和设备像素可以点这里</a>）,而设计稿中的1px其实是1个设备像素的大小。<br>解决办法：</p>
+<ul>
+<li>meta标签的viewport中initial-scale设置为0.5(<a href="https://youngleish.github.io/2016/10/29/viewport/" target="_blank" rel="external">关于viewport戳这里</a>)，原理如下：<br>依然用iPhone6为例，initial-scale为1的时候，1个css像素对应2个设备像素，innitial-scale设置为0.5以后visual viewport相对于ideal viewport缩小了1倍，原来1个css像素可以展示的内容变成2个css像素来显示，即2个css像素对应2个设备像素，那么设备像素比dpr=1，也就是页面中我们看到的1个css像素变成了对应1个物理像素了。</li>
+<li>缩放，css中使用伪类和transform来解决，下面这段代码是用sass封装的函数：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@mixin fix1border($name:border,$type:solid,$color:#eee)</span><br><span class="line">&#123;</span><br><span class="line">	position:relative;</span><br><span class="line">	&amp;:after&#123;</span><br><span class="line">		content:&apos;&apos;;</span><br><span class="line">		position:absolute;</span><br><span class="line">		top:0;</span><br><span class="line">		left:0;</span><br><span class="line">		width:200%;</span><br><span class="line">		height:200%;</span><br><span class="line">		#&#123;$name&#125;:1px $type $color;</span><br><span class="line">		-webkit-transform: scale(0.5);</span><br><span class="line">		transform:scale(0.5);</span><br><span class="line">		-webkir-transorm-origin:0 0;</span><br><span class="line">		transform-origin:0 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动端/" rel="tag">#移动端</a>
+          
+            <a href="/tags/问题汇总/" rel="tag">#问题汇总</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/29/viewport/" rel="next" title="viewport如何影响移动端页面展示">
+                <i class="fa fa-chevron-left"></i> viewport如何影响移动端页面展示
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="youngleish" />
+          <p class="site-author-name" itemprop="name">youngleish</p>
+          <p class="site-description motion-element" itemprop="description">纸上得来中觉浅,绝知此事要躬行</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#移动端遇到的问题集合"><span class="nav-number">1.</span> <span class="nav-text">移动端遇到的问题集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于localStorage"><span class="nav-number">1.0.1.</span> <span class="nav-text">关于localStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#浏览器隐私模式"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">浏览器隐私模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于ios系统中，中文输入法输入英文的时候出现的1-6空格"><span class="nav-number">1.0.2.</span> <span class="nav-text">关于ios系统中，中文输入法输入英文的时候出现的1/6空格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UC浏览器页面字体被无辜放大："><span class="nav-number">1.0.3.</span> <span class="nav-text">UC浏览器页面字体被无辜放大：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安卓多次无法调起微信支付的问题："><span class="nav-number">1.0.4.</span> <span class="nav-text">安卓多次无法调起微信支付的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#retina屏幕中1px的问题"><span class="nav-number">1.0.5.</span> <span class="nav-text">retina屏幕中1px的问题</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngleish</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
