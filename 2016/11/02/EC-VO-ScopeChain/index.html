@@ -90,13 +90,13 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/02/EC-VO-ScopeChain/index.html">
 <meta property="og:site_name" content="youngleish">
 <meta property="og:description" content="执行上下文和作用域">
-<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC.jpeg">
-<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/scope%20chain.jpeg">
-<meta property="og:updated_time" content="2016-11-01T16:13:33.000Z">
+<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC0.jpeg">
+<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC1.jpeg">
+<meta property="og:updated_time" content="2016-11-02T08:07:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="执行上下文和作用域">
 <meta name="twitter:description" content="执行上下文和作用域">
-<meta name="twitter:image" content="http://oa3f0usbm.bkt.clouddn.com/EC.jpeg">
+<meta name="twitter:image" content="http://oa3f0usbm.bkt.clouddn.com/EC0.jpeg">
 
 
 
@@ -312,8 +312,9 @@
 <h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p><strong>执行上下文(Execution Context = EC)</strong> : 为JS中执行的代码提供了环境，这个环境定义了执行代码中变量或者函数可以访问的数据（下面的介绍会统一使用EC表示执行上下文）。</p>
 <p><strong>执行上下文栈(Execution Cotext Stack = ECS)</strong> : ECMScript有三种可以执行的代码：全局代码，函数代码，Eval代码（<a href="http://weizhifeng.net/chapter-1-execution-contexts.html" target="_blank" rel="external">详解看这里</a>）。每一种可执行的代码都会调用自身的EC，这一系列EC就会组成一个执行上下文栈,也就是ECS。</p>
 <p>全局代码会产生全局执行上下文是最外围的EC.在浏览器中，全局执行上下文被认为是Window对象，放在栈底。当代码执行流进入一个函数的时候，该函数的EC就被放到栈顶，当该函数执行完毕以后，EC就被销毁，全局执行上下文会在退出程序的时候，例如关闭浏览器时被销毁。</p>
-<p><strong>变量对象(Variable Object = VO)</strong>:每一个EC都会有一个与其关联的变量对象（下面介绍内容统一使用VO）,EC中定义的变量、函数、参数等都会存在这个对象中。如果是函数的EC,则把<strong>活动对象(Active Object = AO)</strong>作为VO。</p>
-<p><strong>作用域(Scope)</strong> : 从字面意来看域是空间或者范围，那么作用域是提供了一个范围，那是为谁？又为了做什么提供的范围呢？我的总结是作用域为编译器声明变量和函数以及引擎对变量和函数赋值时提供了一套规则。</p>
+<p><strong>变量对象(Variable Object = VO)</strong>:每一个EC都会有一个与其关联的变量对象（下面介绍内容统一使用VO）,EC中定义的变量、函数、参数等都会存在这个对象中。如果是函数的EC,则把<strong>活动对象(Active Object = AO)</strong>作为VO，活动对象最开始时就会包含一个变量arguments。</p>
+<p><strong>作用域(Scope)</strong> : 从字面意来看域是空间或者范围，那么作用域是提供了一个范围，那是为谁？又为了做什么提供的范围呢？</p>
+<p>作用域是把所有的变量、函数、参数等收集起来组成查询，通过一些规则来确定执行代码有权限访这些标识符、函数等。</p>
 <p>全局作用域：</p>
 <ul>
 <li>最外层函数和在最外层函数外定义的变量拥有全局作用域；</li>
@@ -324,12 +325,31 @@
 <ul>
 <li>局部函数声明都是拥有局部作用域</li>
 </ul>
-<p><strong>作用域链(scope chain)</strong>：通常执行的代码中会有多个并列函数，或者嵌套函数，这些函数的作用域组成了作用域链。他可以自上而下将所有的EC绑定的VO/AO串连在一起，使嵌套的函数可以继承外层函数的数据，而并列函数之间互不干扰。在作用域链的前端永远是当前执行代码的VO/AO,后面是下一个VO/AO,一直到底端的全局EC中的VO。</p>
+<p><strong>作用域链(scope chain)</strong>：通常执行的代码中会有多个并列函数，或者嵌套函数，这些函数的作用域组成了作用域链。形成的作用域链用来保证执行代码有序地访问变量、函数、参数等。他可以自上而下将所有的EC绑定的VO/AO串连在一起，使嵌套的函数可以继承外层函数的数据，而并列函数之间互不干扰。在作用域链的前端永远是当前执行代码的VO/AO,后面是下一个VO/AO,一直到底端的全局EC中的VO。</p>
+<p><strong>标识符解析</strong>：如果某个函数执行过程用到一个变量,该变量在其EC中没有定义过，那么代码会沿着作用域链从最前端开始一级一级的搜索直到找到该变量为止。这个沿着作用域链搜索标识符（变量）的过程就叫标识符解析。</p>
+<p><strong>注意：</strong> 内部EC中的代码执行过程可以通过作用域链访问外部EC的变量，函数等，但是外部EC中的代码不可以访问内部EC.</p>
 <h3 id="JS代码执行细节"><a href="#JS代码执行细节" class="headerlink" title="JS代码执行细节"></a>JS代码执行细节</h3><p>当代码在EC中执行的时候，分为2个阶段：</p>
 <ul>
 <li>预解析（创建阶段）：<ul>
 <li>创建作用域链</li>
-<li>创建变量，函数，参数</li>
+<li>解析器创建VO/AO(创建变量，函数，参数)<ul>
+<li>根据函数的参数创建arguments对象<ul>
+<li>arguments:{<br>  callee: 函数名称,<br>  length: 函数长度,<br>  参数名: 参数值<br>}</li>
+</ul>
+</li>
+<li>扫描执行代码，查找函数声明<ul>
+<li>多有函数声明都以函数名：函数引用的方式存入VO/AO中</li>
+<li>如果<strong>函数重名</strong>，则后面的会把前面的函数覆盖</li>
+</ul>
+</li>
+<li>查找变量<ul>
+<li>所有变量以变量名：undefined方式存入VO/AO中</li>
+<li>如果<strong>变量和函数或者参数重名</strong>，不会影响已经存在的函数或者参数</li>
+<li>var声明的变量会自动添加到最近的执行上下文中，如果变量初始化时没有通过var声明，js解析器会自动把变量添加到全局执行上下文中。</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>确定this</li>
 </ul>
 </li>
@@ -338,9 +358,13 @@
 </ul>
 </li>
 </ul>
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">function fn1(a)&#123;</span><br><span class="line">	alert(a);</span><br><span class="line">	var a=2;</span><br><span class="line">&#125;</span><br><span class="line">fn1(a);</span><br><span class="line">alert(a);</span><br></pre></td></tr></table></figure>
-<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC.jpeg" alt=""><br><img src="http://oa3f0usbm.bkt.clouddn.com/scope%20chain.jpeg" alt=""></p>
+<p>举个栗子1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">function fn1(a,b)&#123;</span><br><span class="line">	alert(a+b);</span><br><span class="line">	var a=2;</span><br><span class="line">	alert(a);</span><br><span class="line">&#125;</span><br><span class="line">fn1(a,10);</span><br><span class="line">alert(a);</span><br></pre></td></tr></table></figure>
+<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC0.jpeg" alt=""></p>
+<p>举个栗子2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function fn2()&#123;</span><br><span class="line">	a = 2</span><br><span class="line">	alert(a);</span><br><span class="line">&#125;</span><br><span class="line">fn2();</span><br></pre></td></tr></table></figure>
+<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC1.jpeg" alt=""></p>
+<h4 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h4><p>这些连接是我学习过程中阅读参考的文章，谢谢各位无私奉献大神。<br><a href="http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html" target="_blank" rel="external">http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html</a><br><a href="http://www.cnblogs.com/wilber2013/p/4909430.html" target="_blank" rel="external">http://www.cnblogs.com/wilber2013/p/4909430.html</a><br><a href="https://github.com/natee/natee.github.io/issues/7" target="_blank" rel="external">https://github.com/natee/natee.github.io/issues/7</a></p>
 
       
     </div>
@@ -491,7 +515,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文和作用域"><span class="nav-number">1.</span> <span class="nav-text">执行上下文和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码执行细节"><span class="nav-number">1.2.</span> <span class="nav-text">JS代码执行细节</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文和作用域"><span class="nav-number">1.</span> <span class="nav-text">执行上下文和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码执行细节"><span class="nav-number">1.2.</span> <span class="nav-text">JS代码执行细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章："><span class="nav-number">1.2.1.</span> <span class="nav-text">参考文章：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
