@@ -367,9 +367,9 @@
 </tbody>
 </table>
 <p>方法1：通过width把viewport的值设置为ideal viewport</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</div></pre></td></tr></table></figure>
 <p>方法2:设置页面的缩放比例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure>
 <p>这两种方法都可以把viewport设置为ideal viewport, 如果2种方法同时设置出现冲突例如content=’width=800,initial-scale=1’,浏览器会取2者中的最大值。</p>
 <h4 id="6-关于initial-scale"><a href="#6-关于initial-scale" class="headerlink" title="6.关于initial-scale"></a>6.关于initial-scale</h4><p>initial-scale是页面的初始缩放值，是viewport 相对于ideal viewport进行缩放。</p>
 <p>以iPhone6为例：<br>当初始缩放比例 initial-scale = 1的时候，表示viewport 与 ideal viewport值相等都是 375px , 如果initial-scale = 0.5, 表示viewport相对于ideal viewport缩小了1倍，原来1px能展示的东西,现在需要用2px来展示，因此viewport为750px。如下图所示列：<br><img src="http://oa3f0usbm.bkt.clouddn.com/initial-scale1.png" alt=""><br><img src="http://oa3f0usbm.bkt.clouddn.com/initial-scale0.5.png" alt=""><br>关于viewport和ideal viewport有一个公式如下:</p>
