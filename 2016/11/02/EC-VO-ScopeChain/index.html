@@ -90,13 +90,13 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/02/EC-VO-ScopeChain/index.html">
 <meta property="og:site_name" content="youngleish">
 <meta property="og:description" content="执行上下文和作用域">
-<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&&Scope.jpeg">
-<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&&Scope1.jpeg">
-<meta property="og:updated_time" content="2016-11-04T16:25:52.000Z">
+<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&Scope0.jpeg">
+<meta property="og:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&Scope1.jpeg">
+<meta property="og:updated_time" content="2016-11-09T06:15:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="执行上下文和作用域">
 <meta name="twitter:description" content="执行上下文和作用域">
-<meta name="twitter:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&&Scope.jpeg">
+<meta name="twitter:image" content="http://oa3f0usbm.bkt.clouddn.com/EC&Scope0.jpeg">
 
 
 
@@ -309,12 +309,12 @@
 
       
         <p>执行上下文和作用域<br><a id="more"></a></p>
-<h3 id="相关概念-："><a href="#相关概念-：" class="headerlink" title="相关概念 ："></a>相关概念 ：</h3><h4 id="执行上下文-Execution-Context-EC-："><a href="#执行上下文-Execution-Context-EC-：" class="headerlink" title="执行上下文(Execution Context = EC)："></a>执行上下文(Execution Context = EC)：</h4><p>为JS中执行的代码提供了环境，这个环境定义了代码在执行过程中可以获取的变量、函数等数据。（下面的介绍会统一使用EC表示执行上下文）</p>
+<h2 id="执行上下文和作用域"><a href="#执行上下文和作用域" class="headerlink" title="执行上下文和作用域"></a>执行上下文和作用域</h2><h3 id="相关概念-："><a href="#相关概念-：" class="headerlink" title="相关概念 ："></a>相关概念 ：</h3><h4 id="执行上下文-Execution-Context-EC-："><a href="#执行上下文-Execution-Context-EC-：" class="headerlink" title="执行上下文(Execution Context = EC)："></a>执行上下文(Execution Context = EC)：</h4><p>为JS中执行的代码提供了环境，这个环境定义了代码在执行过程中可以获取的变量、函数等数据。（下面的介绍会统一使用EC表示执行上下文）</p>
 <h5 id="执行上下文栈-Execution-Cotext-Stack-ECS"><a href="#执行上下文栈-Execution-Cotext-Stack-ECS" class="headerlink" title="执行上下文栈(Execution Cotext Stack = ECS):"></a>执行上下文栈(Execution Cotext Stack = ECS):</h5><p>ECMScript有三种可以执行的代码：全局代码，函数代码，Eval代码（<a href="http://weizhifeng.net/chapter-1-execution-contexts.html" target="_blank" rel="external">详解看这里</a>）。每一种可执行的代码都会调用自身的EC，这一系列EC就会组成一个执行上下文栈,也就是ECS。</p>
 <p>全局代码会产生全局执行上下文，在浏览器中，全局执行上下文被认为是Window对象，放在栈底。当代码执行流进入一个函数的时候，该函数的EC就被放到栈顶，当该函数执行完毕以后，EC就被销毁，全局执行上下文会在退出程序的时候，例如关闭浏览器时被销毁。</p>
 <h5 id="变量对象-Variable-Object-VO"><a href="#变量对象-Variable-Object-VO" class="headerlink" title="变量对象(Variable Object = VO):"></a>变量对象(Variable Object = VO):</h5><p>每一个EC都会有一个与其关联的变量对象（下面介绍内容统一使用VO）,EC中定义的变量、函数、参数等都会存在这个对象中。如果是函数的EC,则把<strong>活动对象(Active Object = AO)</strong>作为VO，活动对象最开始时就会包含一个arguments对象。</p>
 <blockquote>
-<p>关于AO中的arguments对象我有一个疑问，在《JavaScript高级程序设计》第三版中描述AO中的arguments属性值就是一个数组，数组里面是参数的值，但是网络上一些文章中AO的arguments属性值是一个json对象，对象里面包含caalle,length,和参数(下文截图中用的就是网络文章中的写法)，我不太确定那种说法对，目前持保留态度后续会确认更新。</p>
+<p>关于AO中的arguments对象我有一个疑问，在《JavaScript高级程序设计》第三版中描述AO中的arguments属性值就是一个数组，数组里面是参数的值，但是网络上一些文章中AO的arguments属性值是一个json对象，对象里面包含callee,length,和参数(下文截图中用的就是网络文章中的写法)，我不太确定那种说法对，目前持保留态度后续会确认更新。</p>
 </blockquote>
 <h5 id="作用域-Scope"><a href="#作用域-Scope" class="headerlink" title="作用域(Scope):"></a>作用域(Scope):</h5><p>从字面意来看域是空间或者范围，那么作用域是提供了一个范围，那是为谁？又为了做什么提供的范围呢？</p>
 <p>作用域是把所有的变量、函数、参数等收集起来组成查询对象，通过一些规则来确定执行代码有权限访这些标识符、函数等。</p>
@@ -375,7 +375,7 @@
 </ul>
 <p>举个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var a=1;</div><div class="line">function fn1(a,b)&#123;</div><div class="line">	alert(a+b);</div><div class="line">	var a=2;</div><div class="line">	alert(a);</div><div class="line">&#125;</div><div class="line">fn1(a,10); //11</div><div class="line">alert(a); //2</div></pre></td></tr></table></figure>
-<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC&amp;&amp;Scope.jpeg" alt=""></p>
+<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC&amp;Scope0.jpeg" alt=""></p>
 <h6 id="hoisting-提升"><a href="#hoisting-提升" class="headerlink" title="hoisting 提升"></a>hoisting 提升</h6><p>提升包括函数声明提升和变量提升，函数声明是指函数执行之前解析器先读取函数声明。变量提升是指无论变量声明在EC的任何位置，解析器都会把变量声明提升到EC的顶部。如果函数声明和变量声明同时存在，会先提升函数声明后提升变量声明。</p>
 <blockquote>
 <p>注意：关于变量提升需要注意的是，在预解析阶段只会提升变量的声明，不会提升赋值。</p>
@@ -388,7 +388,7 @@
 </blockquote>
 <p>举个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn2()&#123;</div><div class="line">	a = 2</div><div class="line">	alert(a);</div><div class="line">&#125;</div><div class="line">fn2();</div></pre></td></tr></table></figure>
-<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC&amp;&amp;Scope1.jpeg" alt=""></p>
+<p>解析如下：<br><img src="http://oa3f0usbm.bkt.clouddn.com/EC&amp;Scope1.jpeg" alt=""></p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html" target="_blank" rel="external">http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html</a><br><a href="http://www.cnblogs.com/wilber2013/p/4909430.html" target="_blank" rel="external">http://www.cnblogs.com/wilber2013/p/4909430.html</a><br><a href="https://github.com/natee/natee.github.io/issues/7" target="_blank" rel="external">https://github.com/natee/natee.github.io/issues/7</a></p>
 
       
@@ -540,7 +540,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念-："><span class="nav-number">1.</span> <span class="nav-text">相关概念 ：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行上下文-Execution-Context-EC-："><span class="nav-number">1.1.</span> <span class="nav-text">执行上下文(Execution Context = EC)：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行上下文栈-Execution-Cotext-Stack-ECS"><span class="nav-number">1.1.1.</span> <span class="nav-text">执行上下文栈(Execution Cotext Stack = ECS):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量对象-Variable-Object-VO"><span class="nav-number">1.1.2.</span> <span class="nav-text">变量对象(Variable Object = VO):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#作用域-Scope"><span class="nav-number">1.1.3.</span> <span class="nav-text">作用域(Scope):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#作用域链-scope-chain-："><span class="nav-number">1.1.4.</span> <span class="nav-text">作用域链(scope chain)：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数如何生成作用域链："><span class="nav-number">1.1.4.1.</span> <span class="nav-text">函数如何生成作用域链：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#作用域链的顺序："><span class="nav-number">1.1.4.2.</span> <span class="nav-text">作用域链的顺序：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#标识符解析："><span class="nav-number">1.1.4.3.</span> <span class="nav-text">标识符解析：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码执行细节"><span class="nav-number">2.</span> <span class="nav-text">JS代码执行细节</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hoisting-提升"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">hoisting 提升</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文和作用域"><span class="nav-number">1.</span> <span class="nav-text">执行上下文和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关概念-："><span class="nav-number">1.1.</span> <span class="nav-text">相关概念 ：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行上下文-Execution-Context-EC-："><span class="nav-number">1.1.1.</span> <span class="nav-text">执行上下文(Execution Context = EC)：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行上下文栈-Execution-Cotext-Stack-ECS"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">执行上下文栈(Execution Cotext Stack = ECS):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量对象-Variable-Object-VO"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">变量对象(Variable Object = VO):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#作用域-Scope"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">作用域(Scope):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#作用域链-scope-chain-："><span class="nav-number">1.1.1.4.</span> <span class="nav-text">作用域链(scope chain)：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数如何生成作用域链："><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">函数如何生成作用域链：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#作用域链的顺序："><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">作用域链的顺序：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#标识符解析："><span class="nav-number">1.1.1.4.3.</span> <span class="nav-text">标识符解析：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS代码执行细节"><span class="nav-number">1.2.</span> <span class="nav-text">JS代码执行细节</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hoisting-提升"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">hoisting 提升</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">1.2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
